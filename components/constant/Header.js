@@ -23,17 +23,19 @@ export default function Header() {
                 
                 {/* MIDDLE | NAVIGATION */}
                 <nav className='hidden md:flex h-full items-center w-full md:w-2/4 justify-center gap-x-10 text-white'>
-                    <a className='text-base font-semibold cursor-pointer'>Home</a>
-                    <a className='text-base font-semibold cursor-pointer'>Credit Repair</a>
-                    <a className='text-base font-semibold cursor-pointer'>Tax Returns</a>
-                    <a className='text-base font-semibold cursor-pointer'>Book Appointment</a>
+                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Home</a>
+                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Credit Repair</a>
+                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Tax Returns</a>
+                    <a className='text-base font-semibold cursor-pointer text-yellow-400 hover:scale-105 underline underline-offset-8'>Book Appointment</a>
+                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Our Location</a>
+
                 </nav>
 
                 {/* RIGHT SIDE | Contant  */}
                 <div className='hidden md:flex h-full items-center w-full md:w-1/4 justify-center'>
-                    <button className='bg-[rgb(51,214,135)] px-4 py-2 rounded-md text-gray-50 font-semibold shadow-lg'>
-                        +1 123 456 789
-                    </button>
+                    <a href='tel:+1956784-2009' className='bg-[rgb(51,214,135)] px-4 py-2 rounded-md text-gray-50 font-semibold shadow-lg'>
+                        +1 956 784-2009
+                    </a>
                 </div>
             </div>
         </header>

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import {FaRegCommentDots, FaGlobe, FaBalanceScale, FaWallet} from 'react-icons/fa'
 
 export default function Home() {
   return (
@@ -27,24 +28,39 @@ export default function Home() {
           <div className='absolute bg-white shadow-2xl h-40 w-full max-w-7xl -top-20 rounded-xl left-1/2 -translate-x-1/2'>
               <div className='grid grid-cols-4 h-full'>
 
-                  <div className='flex justify-evenly items-center h-full border-r'>
-                      asdasd
+                  <div className='flex flex-wrap md:flex-nowrap justify-evenly items-center h-full border-r'>
+                      <FaRegCommentDots className='text-green-400' size={45}/>
                       <div className='flex flex-col'>
                             <h2 className='font-semibold capitalize'>Quick Response</h2>
-                            <p>24/7 Client Support</p>
+                            <p className='text-gray-500 mt-2'>24/7 Client Support</p>
                       </div>
                   </div>
 
 
-                  <div className='flex justify-evenly items-center h-full border-r'>
-                      asdasd
+                  <div className='flex  flex-wrap md:flex-nowrap justify-evenly items-center h-full border-r'>
+                      <FaGlobe className='text-green-400' size={45}/>
                       <div className='flex flex-col'>
-                            <p>asdasd</p>
-                            <p>asdasd</p>
+                            <h2 className='font-semibold capitalize'>Expert Support</h2>
+                            <p className='text-gray-500 mt-2'>Worldwide Specialists</p>
+                      </div>
+                  </div>
+
+                  <div className='flex flex-wrap md:flex-nowrap justify-evenly items-center h-full border-r'>
+                      <FaBalanceScale className='text-green-400' size={45}/>
+                      <div className='flex flex-col'>
+                            <h2 className='font-semibold capitalize'>Flexible Payment</h2>
+                            <p className='text-gray-500 mt-2'>Flexible Payment</p>
                       </div>
                   </div>
 
 
+                  <div className='flex  flex-wrap md:flex-nowrap justify-evenly items-center h-full border-r'>
+                      <FaWallet className='text-green-400' size={45}/>
+                      <div className='flex flex-col'>
+                            <h2 className='font-semibold capitalize'>Affordable Prices</h2>
+                            <p className='text-gray-500 mt-2'>Easy Payment Methods</p>
+                      </div>
+                  </div>
 
               </div>
           </div>
