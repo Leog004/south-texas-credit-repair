@@ -6,7 +6,7 @@ import 'react-calendar/dist/Calendar.css';
 import { getAppointmentsByData } from '../../services';
 
 export default function ScheduleSignUpForm() {
-    const [value, onChange] = useState(new Date());
+    const [value, onChange] = useState(new Date);
     const [availibity, setAvailibity] = useState([]);
     const [appointment, setAppointment] = useState('');
 
@@ -120,7 +120,7 @@ export default function ScheduleSignUpForm() {
                                                     <Calendar
                                                         onChange={(date) => onChange(date)}
                                                         value={value}
-                                                        minDate={new Date()}
+                                                        minDate={new Date}
                                                         calendarType='US'
                                                         onClickDay={getDaysAvailable}
                                                     />
