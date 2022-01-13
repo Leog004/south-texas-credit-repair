@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { useState, useEffect } from 'react'
 
 import Calendar from 'react-calendar';
@@ -118,7 +119,6 @@ export default function ScheduleSignUpForm() {
                                                     <div className="relative">
                                                     <Calendar
                                                         onChange={onChange}
-                                                        value={value}
                                                         minDate={new Date()}
                                                         calendarType='US'
                                                         onClickDay={getDaysAvailable}
