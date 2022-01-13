@@ -118,10 +118,10 @@ export default function ScheduleSignUpForm() {
                                                                 {
                                                                     availibity.map((el) => (
                                                                         el.available &&
-                                                                        <div onClick={() => setAppointmentClick(`${el.time} ${el.morning ? 'AM'  : 'PM'}`)} key={el.time} className='flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden gap-x-10 mb-2 cursor-pointer'>
+                                                                        <div onClick={() => setAppointmentClick(`${el.time} ${el.morning ? "AM"  : "PM"}`)} key={el.time} className='flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden gap-x-10 mb-2 cursor-pointer'>
                                                                             <div className="w-2/3 p-4">
                                                                                 <h1 className="text-gray-900 font-bold text-2xl">
-                                                                                    {el.time} <span className='text-xs'>{el.morning ? 'AM' : 'PM'}</span>
+                                                                                    {el.time} <span className='text-xs'>${el.morning ? "AM"  : "PM"}</span>
                                                                                 </h1>
                                                                                 <p className="mt-2 text-gray-600 text-sm">
                                                                                     {el.consultent}
