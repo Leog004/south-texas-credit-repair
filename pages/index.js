@@ -15,11 +15,11 @@ export default function Home({data}) {
                         {
                           data.buttonRowComponents.map((el) => (
                             el.buttonColor === 'blue' ?
-                            <button className='mr-10 px-6 py-3 bg-[#4e86ff] rounded-md text-white font-semibold hover:scale-105 hover:shadow-xl hover:bg-[#2e6ef8] transition-all duration-100'>
+                            <button key={el.buttonText} className='mr-10 px-6 py-3 bg-[#4e86ff] rounded-md text-white font-semibold hover:scale-105 hover:shadow-xl hover:bg-[#2e6ef8] transition-all duration-100'>
                               {el.buttonText}
                             </button>          
                             :
-                            <button className='mr-10 px-6 py-3 bg-[rgba(255,255,255,.2)] text-white font-semibold hover:scale-105 hover:shadow-xl hover:bg-[255,255,255,.4] transition-all duration-100 rounded-md'>
+                            <button key={el.buttonText} className='mr-10 px-6 py-3 bg-[rgba(255,255,255,.2)] text-white font-semibold hover:scale-105 hover:shadow-xl hover:bg-[255,255,255,.4] transition-all duration-100 rounded-md'>
                               {el.buttonText}
                               </button>
                           ))

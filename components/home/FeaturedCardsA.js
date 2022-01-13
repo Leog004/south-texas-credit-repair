@@ -13,7 +13,7 @@ export default function FeaturedCardsA({data}) {
                 {
                     data.map((el, index) => (
                         
-                        <div className='flex flex-wrap md:flex-nowrap justify-evenly items-center h-full border-r'>
+                        <div key={el.title} className='flex flex-wrap md:flex-nowrap justify-evenly items-center h-full border-r'>
                             <div className='text-green-400 text-[2.8rem]'>{React.createElement(Icons[icons[index]])}</div>
                             {/* <FaRegCommentDots className='text-green-400' size={45}/> */}
                             <div className='flex flex-col'>
