@@ -118,7 +118,8 @@ export default function ScheduleSignUpForm() {
                                                 <div className="w-full flex justify-center">
                                                     <div className="relative">
                                                     <Calendar
-                                                        onChange={onChange}
+                                                        onChange={(date) => onChange(date)}
+                                                        value={value}
                                                         minDate={new Date()}
                                                         calendarType='US'
                                                         onClickDay={getDaysAvailable}
