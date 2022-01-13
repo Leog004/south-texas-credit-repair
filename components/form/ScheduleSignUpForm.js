@@ -118,12 +118,12 @@ export default function ScheduleSignUpForm() {
                                                                 {
                                                                     availibity.map((el) => (
                                                                         el.available &&
-                                                                        <div onClick={() => setAppointmentClick(`${el.time} ${el.morning ? 'AM'  : 'PM'}`)} key={el.time} class='flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden gap-x-10 mb-2 cursor-pointer'>
-                                                                            <div class="w-2/3 p-4">
-                                                                                <h1 class="text-gray-900 font-bold text-2xl">
+                                                                        <div onClick={() => setAppointmentClick(`${el.time} ${el.morning ? 'AM'  : 'PM'}`)} key={el.time} className='flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden gap-x-10 mb-2 cursor-pointer'>
+                                                                            <div className="w-2/3 p-4">
+                                                                                <h1 className="text-gray-900 font-bold text-2xl">
                                                                                     {el.time} <span className='text-xs'>{el.morning ? 'AM' : 'PM'}</span>
                                                                                 </h1>
-                                                                                <p class="mt-2 text-gray-600 text-sm">
+                                                                                <p className="mt-2 text-gray-600 text-sm">
                                                                                     {el.consultent}
                                                                                 </p>
                                                                             </div>
@@ -135,8 +135,8 @@ export default function ScheduleSignUpForm() {
                                                 </div>
                                             </>
                                         :
-                                        <div class="w-full p-4 bg-green-200">
-                                            <h1 class="text-gray-900 font-bold text-2xl">
+                                        <div className="w-full p-4 bg-green-200">
+                                            <h1 className="text-gray-900 font-bold text-2xl">
                                                 {value.toLocaleDateString("en-US")} | {appointment} 
                                             </h1>
                                         </div>
