@@ -18,7 +18,7 @@ export default function Header() {
 
                 {/* LEFT SIDE | LOGO */}
                 <div className='flex h-full items-center w-full md:w-1/4 justify-center'>
-                    <img className='h-24 w-auto' src='/Logo/SouthTexasCreditRepairLogo_W.jpg' />
+                    <img className='h-12 md:h-24 w-auto' src='/Logo/SouthTexasCreditRepairLogo_W.jpg' />
                 </div>
                 
                 {/* MIDDLE | NAVIGATION */}

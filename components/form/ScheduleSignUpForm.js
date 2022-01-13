@@ -119,11 +119,10 @@ export default function ScheduleSignUpForm() {
                                                     <div className="relative">
                                                     <Calendar
                                                         onChange={(date) => onChange(date)}
+                                                        value={value}
                                                         minDate={new Date()}
                                                         calendarType='US'
                                                         onClickDay={getDaysAvailable}
-                                                        view='month'
-                                                        activeStartDate={new Date()}
                                                     />
                                                     </div>
                                                 </div>
