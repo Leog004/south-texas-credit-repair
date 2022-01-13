@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { getAppointmentsByData } from '../../services';
 
 export default function ScheduleSignUpForm() {
     const [value, onChange] = useState(new Date());
@@ -11,52 +12,66 @@ export default function ScheduleSignUpForm() {
 
     useEffect(() => {
         getDaysAvailable();
-    })
+    }, [value])
 
-    const getDaysAvailable = () => {
+    const getDaysAvailable = async () => {
 
-        
-        const timeAvailable = [
 
-            {
-                available: false,
-                time: '10:00 - 10:30',
-                morning: true,
-                consultent: 'Javi Martinez'
-            },
 
-            {
-                available: true,
-                time: '11:00 - 11:30',
-                morning: true,
-                consultent: 'Javi Martinez'
-            },
-            {
-                available: true,
-                time: '12:00 - 12:30',
-                morning: false,
-                consultent: 'Javi Martinez'
-            },
-            {
-                available: false,
-                time: '1:00 - 1:30',
-                morning: false,
-                consultent: 'Javi Martinez'
-            },
-            {
-                available: false,
-                time: '2:00 - 2:30',
-                morning: false,
-                consultent: 'Javi Martinez'
-            },
-            {
-                available: true,
-                time: '3:00 - 3:30',
-                morning: false,
-                consultent: 'Javi Martinez'
-            },
-        ];
-        setAvailibity(timeAvailable);
+         await getAppointmentsByData(value.toLocaleDateString('sv-SE')).then((result) => {
+
+            const timeAvailable = [
+
+                {
+                    available: true,
+                    time: '10:00 - 10:30',
+                    morning: true,
+                    consultent: 'Javi Martinez'
+                },
+    
+                {
+                    available: true,
+                    time: '11:00 - 11:30',
+                    morning: true,
+                    consultent: 'Javi Martinez'
+                },
+                {
+                    available: true,
+                    time: '12:00 - 12:30',
+                    morning: false,
+                    consultent: 'Javi Martinez'
+                },
+                {
+                    available: true,
+                    time: '1:00 - 1:30',
+                    morning: false,
+                    consultent: 'Javi Martinez'
+                },
+                {
+                    available: true,
+                    time: '2:00 - 2:30',
+                    morning: false,
+                    consultent: 'Javi Martinez'
+                },
+                {
+                    available: true,
+                    time: '3:00 - 3:30',
+                    morning: false,
+                    consultent: 'Javi Martinez'
+                },
+            ];
+
+            const myArrayFiltered = timeAvailable.filter((el) => {
+                return result.some((f) => {
+                  return f.time !== el.time;
+                });
+              });
+
+            console.log(result, value.toLocaleDateString('sv-SE'), myArrayFiltered, timeAvailable);
+            setAvailibity(myArrayFiltered.length > 0 ? myArrayFiltered : timeAvailable);
+        })
+
+
     }
 
     const setAppointmentClick = (el) => {
@@ -121,7 +136,7 @@ export default function ScheduleSignUpForm() {
                                                                         <div onClick={() => setAppointmentClick(`${el.time} ${el.morning ? "AM"  : "PM"}`)} key={el.time} className='flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden gap-x-10 mb-2 cursor-pointer'>
                                                                             <div className="w-2/3 p-4">
                                                                                 <h1 className="text-gray-900 font-bold text-2xl">
-                                                                                    {el.time} <span className='text-xs'>${el.morning ? "AM"  : "PM"}</span>
+                                                                                    {el.time} <span className='text-xs'>{el.morning ? "AM"  : "PM"}</span>
                                                                                 </h1>
                                                                                 <p className="mt-2 text-gray-600 text-sm">
                                                                                     {el.consultent}

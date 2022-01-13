@@ -7,7 +7,7 @@ export default function Footer() {
                 <div className='grid grid-cols-1 md:grid-cols-6 gap-8'>
 
                     <div className='col-span-1 md:col-span-2 pr-28'>
-                        <img src='https://spertyhtml.websitedesigntemplates.net/img/logos/footer-light-logo.png' />
+{/* image */}
                         <p className='text-white mt-6'>We assist you to develop up your flourishing commercial enterprise.</p>
                         <div className='flex gap-x-2 mt-6 items-center self-center align-middle'>
                             <span className='bg-gray-200 px-3 py-1 rounded-full'>a</span>
@@ -20,18 +20,18 @@ export default function Footer() {
                     <div className='col-span-1 md:col-span-4 '>
                         <div className='grid grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-10'>
                             <div>
-                                <img src='https://spertyhtml.websitedesigntemplates.net/img/logos/footer-light-logo.png' />
+{/* image */}
                                 <p className='text-white mt-6'>We assist you to develop up your flourishing commercial enterprise.</p>
                             </div>
 
                             <div>
-                                <img src='https://spertyhtml.websitedesigntemplates.net/img/logos/footer-light-logo.png' />
+{/* image */}                                
                                 <p className='text-white mt-6'>We assist you to develop up your flourishing commercial enterprise.</p>
                             </div>
 
                             <div>
-                                <img src='https://spertyhtml.websitedesigntemplates.net/img/logos/footer-light-logo.png' />
-                                <p className='text-white mt-6'>We assist you to develop up your flourishing commercial enterprise.</p>
+{/* image */}                                
+                                    <p className='text-white mt-6'>We assist you to develop up your flourishing commercial enterprise.</p>
                             </div>
                         </div>
 
@@ -39,17 +39,17 @@ export default function Footer() {
 
                         <div className='grid grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-10'>
                             <div>
-                                <img src='https://spertyhtml.websitedesigntemplates.net/img/logos/footer-light-logo.png' />
+                               {/* image */}
                                 <p className='text-white mt-6'>We assist you to develop up your flourishing commercial enterprise.</p>
                             </div>
 
                             <div>
-                                <img src='https://spertyhtml.websitedesigntemplates.net/img/logos/footer-light-logo.png' />
+                                {/* image */}
                                 <p className='text-white mt-6'>We assist you to develop up your flourishing commercial enterprise.</p>
                             </div>
 
                             <div>
-                                <img src='https://spertyhtml.websitedesigntemplates.net/img/logos/footer-light-logo.png' />
+                                {/* image */}
                                 <p className='text-white mt-6'>We assist you to develop up your flourishing commercial enterprise.</p>
                             </div>
                         </div>

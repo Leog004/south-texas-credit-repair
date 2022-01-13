@@ -43,3 +43,27 @@ export const getHomePageData = async () => {
       return result.homePage; // return data
 
 }
+
+
+
+export const getAppointmentsByData = async (date) => {
+    
+    const query = gql`
+        query GetAppoint ($date: Date!) {
+        upcomingAppointments(where: {monthAndDay: $date}) {
+          id
+          monthAndDay
+          time
+          personName
+        }
+      }
+      `;
+
+      const result = await request(graphqlAPI, query, {date}); // get our response from api call
+
+      return result.upcomingAppointments; // return data
+
+}
+
+
+  
