@@ -37,8 +37,9 @@ export default function Header() {
                     <Link href={'/Taxes'}>
                     <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Tax Returns</a>
                     </Link>
-                    <a className='text-base font-semibold cursor-pointer text-yellow-400 hover:scale-105 underline underline-offset-8'>Book Appointment</a>
-
+                
+                    <a onClick={() => document.getElementById('calender').scrollIntoView()} className='text-base font-semibold cursor-pointer text-yellow-400 hover:scale-105 underline underline-offset-8'>Book Appointment</a>
+                    
                    <Link href={'/Location'}>
                     <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Our Location</a>
                     </Link>
