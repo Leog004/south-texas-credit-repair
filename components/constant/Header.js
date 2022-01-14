@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import Link from 'next/link'
 
 export default function Header() {
 
@@ -18,17 +19,29 @@ export default function Header() {
 
                 {/* LEFT SIDE | LOGO */}
                 <div className='flex h-full items-center w-full md:w-1/4 justify-center'>
-                    <img className='h-12 md:h-24 w-auto' src='/Logo/SouthTexasCreditRepairLogo_W.jpg' />
+                 <Link href={'/'}>
+                    <img className='h-12 md:h-24 w-auto cursor-pointer' src='/Logo/SouthTexasCreditRepairLogo_W.jpg' />
+                    </Link>
                 </div>
                 
                 {/* MIDDLE | NAVIGATION */}
                 <nav className='hidden md:flex h-full items-center w-full md:w-2/4 justify-center gap-x-10 text-white'>
-                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Home</a>
-                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Credit Repair</a>
-                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Tax Returns</a>
-                    <a className='text-base font-semibold cursor-pointer text-yellow-400 hover:scale-105 underline underline-offset-8'>Book Appointment</a>
-                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Our Location</a>
+                    <Link href={'/'}>
+                        <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Home</a>
+                    </Link>
 
+                    <Link href={'/Credit'}>
+                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Credit Repair</a>
+                    </Link>
+
+                    <Link href={'/Taxes'}>
+                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Tax Returns</a>
+                    </Link>
+                    <a className='text-base font-semibold cursor-pointer text-yellow-400 hover:scale-105 underline underline-offset-8'>Book Appointment</a>
+
+                   <Link href={'/Location'}>
+                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Our Location</a>
+                    </Link>
                 </nav>
 
                 {/* RIGHT SIDE | Contant  */}

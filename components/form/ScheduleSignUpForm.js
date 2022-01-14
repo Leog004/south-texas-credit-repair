@@ -128,14 +128,15 @@ export default function ScheduleSignUpForm() {
                                                 </div>
 
                                                 <div className="w-full">
-                                                    <div className="relative">
+                                                <h2 className='my-4 font-semibold'>Availability: </h2>
+                                                    <div className="relative flex flex-wrap gap-y-10">
 
-                                                        <h2 className='my-4 font-semibold'>Availability: </h2>
+                                                        
                                                                 {
                                                                     availibity.map((el) => (
                                                                         el.available &&
-                                                                        <div onClick={() => setAppointmentClick(`${el.time} ${el.morning ? "AM"  : "PM"}`)} key={el.time} className='flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden gap-x-10 mb-2 cursor-pointer'>
-                                                                            <div className="w-2/3 p-4">
+                                                                        <div onClick={() => setAppointmentClick(`${el.time} ${el.morning ? "AM"  : "PM"}`)} key={el.time} className='flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden mb-2 cursor-pointer w-full md:w-1/3 hover:shadow-2xl hover:bg-slate-400 transition-all duration-100'>
+                                                                            <div className="w-full p-4">
                                                                                 <h1 className="text-gray-900 font-bold text-2xl">
                                                                                     {el.time} <span className='text-xs'>{el.morning ? "AM"  : "PM"}</span>
                                                                                 </h1>
