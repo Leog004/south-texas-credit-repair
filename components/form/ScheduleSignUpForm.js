@@ -100,21 +100,21 @@ export default function ScheduleSignUpForm() {
                                 <div className=" relative ">
                                 <FaUser className='absolute top-1/2 -translate-y-1/2 left-5 text-green-600'/>
 
-                                    <input required type="text" id="form-name" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your name" required/>
+                                    <input required type="text" id="form-name" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your name"/>
                                 </div>
                             </div>
                             <div className="w-full">
                                 <div className="relative">
                                 <FaMailBulk className='absolute top-1/2 -translate-y-1/2 left-5 text-green-600'/>
 
-                                    <input required type="email" id="form-email" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your email" required/>
+                                    <input required type="email" id="form-email" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your email"/>
                                 </div>
                             </div>
 
                             <div className="w-full">
                                 <div className="relative h-full items-center">
                                      <FaPhone className='absolute top-1/2 -translate-y-1/2 left-5 text-green-600'/>
-                                    <input required type='text' id="form-phone" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your Phone" required/>
+                                    <input required type='text' id="form-phone" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your Phone"/>
                                 </div>
                             </div>
                             <div className="w-full">
