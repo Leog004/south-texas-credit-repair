@@ -15,7 +15,7 @@ export default function Hero({title, description, image}) {
 
     return (
         <div className='-my-28 md:-mt-24 bg-background h-lg bg-cover bg-center bg-no-repeat' style={{backgroundImage: `${LinearGradient},url(${image})`}}>
-            <div className='flex flex-col gap-y-5 max-w-6xl mx-auto justify-center items-center h-full'>
+            <div className='flex flex-col gap-y-5 max-w-6xl mx-auto justify-center items-center h-full px-10'>
                 <h1 className='text-white text-5xl'>{HeaderTitle}</h1>
                 <p className='text-gray-300 text-base'>{HeaderDesc}</p>
             </div>
