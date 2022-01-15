@@ -47,7 +47,7 @@ export default function Home({data}) {
               </div>
 
               <div className='flex w-full'>
-                <div className='px-10 md:pl-20 md:pr-10 py-10'>
+                <div className='px-5 md:pl-20 md:pr-10 py-10'>
                     <h2 className='text-[rgb(51,214,135)] text-xl md:text-2xl font-semibold leading-10 tracking-widest mb-4'>{data.bodySubtitle}</h2>
                     <h1 className='text-4xl md:text-5xl font-semibold mb-10 tracking-normal leading-snug md:leading-[3.2rem]'>{data.bodyTitle}</h1>
                     <p className='text-gray-700 text-base leading-loose'>
