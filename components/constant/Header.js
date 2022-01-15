@@ -35,27 +35,27 @@ export default function Header() {
                 {/* MIDDLE | NAVIGATION */}
                 <nav className='hidden md:flex h-full items-center w-full md:w-2/4 justify-center gap-x-10 text-white'>
                     <Link href={'/'}>
-                        <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Home</a>
+                        <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105 my-5'>Home</a>
                     </Link>
 
                     <Link href={'/Credit'}>
-                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Credit Repair</a>
+                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105 my-5'>Credit Repair</a>
                     </Link>
 
                     <Link href={'/Taxes'}>
-                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Tax Returns</a>
+                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105 my-5'>Tax Returns</a>
                     </Link>
                 
-                    <a onClick={() => document.getElementById('calender').scrollIntoView()} className='text-base font-semibold cursor-pointer text-yellow-400 hover:scale-105 underline underline-offset-8'>Book Appointment</a>
+                    <a onClick={() => document.getElementById('calender').scrollIntoView()} className='text-base font-semibold cursor-pointer text-yellow-400 hover:scale-105 underline underline-offset-8 my-5'>Book Appointment</a>
                     
                    <Link href={'/Location'}>
-                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105'>Our Location</a>
+                    <a className='text-base font-semibold cursor-pointer hover:text-green-400 hover:scale-105 my-5'>Our Location</a>
                     </Link>
                 </nav>
 
                 {/* RIGHT SIDE | Contant  */}
                 <div className='hidden md:flex h-full items-center w-full md:w-1/4 justify-center'>
-                    <a href='tel:+1956784-2009' className='bg-[rgb(51,214,135)] px-4 py-2 rounded-md text-gray-50 font-semibold shadow-lg'>
+                    <a href='tel:+1956784-2009' className='bg-[rgb(51,214,135)] px-4 py-2 rounded-md text-gray-50 font-semibold shadow-lg my-5'>
                         +1 956 784-2009
                     </a>
                 </div>
