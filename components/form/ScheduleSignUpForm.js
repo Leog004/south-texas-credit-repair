@@ -94,27 +94,27 @@ export default function ScheduleSignUpForm() {
                             </span>
                         </div>
                     </div>
-                    <div className="mt-6">
+                    <form className="mt-6">
                         <div className="w-full space-y-6">
                             <div className="w-full">
                                 <div className=" relative ">
                                 <FaUser className='absolute top-1/2 -translate-y-1/2 left-5 text-green-600'/>
 
-                                    <input type="text" id="form-name" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your name" required/>
+                                    <input required type="text" id="form-name" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your name" required/>
                                 </div>
                             </div>
                             <div className="w-full">
                                 <div className="relative">
                                 <FaMailBulk className='absolute top-1/2 -translate-y-1/2 left-5 text-green-600'/>
 
-                                    <input type="email" id="form-email" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your email" required/>
+                                    <input required type="email" id="form-email" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your email" required/>
                                 </div>
                             </div>
 
                             <div className="w-full">
                                 <div className="relative h-full items-center">
                                      <FaPhone className='absolute top-1/2 -translate-y-1/2 left-5 text-green-600'/>
-                                    <input type='text' id="form-phone" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your Phone" required/>
+                                    <input required type='text' id="form-phone" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your Phone" required/>
                                 </div>
                             </div>
                             <div className="w-full">
@@ -167,13 +167,13 @@ export default function ScheduleSignUpForm() {
                                 </div>
                             <div>
                                 <span className="block w-full rounded-md shadow-sm">
-                                    <button type="button" className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                    <button type="submit" className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                         Schedule
                                     </button>
                                 </span>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div className="px-4 py-6 border-t-2 border-gray-200 bg-gray-50 sm:px-10">
                     <p className="text-xs leading-5 text-gray-500">

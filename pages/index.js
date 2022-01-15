@@ -30,7 +30,7 @@ export default function Home({data}) {
         </section>
 
 
-        <section className='h-full min-h-screen w-full bg-zinc-50 relative py-20'>
+        <section className='h-full w-full bg-zinc-50 relative py-20'>
 
           <FeaturedCardsA data={data.featureCardComponents} />
 
