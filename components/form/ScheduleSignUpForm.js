@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { getAppointmentsByData } from '../../services';
+import {FaPhone, FaUser, FaMailBulk} from 'react-icons/fa'
 
 export default function ScheduleSignUpForm() {
     const [value, onChange] = useState(new Date);
@@ -97,18 +98,23 @@ export default function ScheduleSignUpForm() {
                         <div className="w-full space-y-6">
                             <div className="w-full">
                                 <div className=" relative ">
-                                    <input type="text" id="form-name" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your name" required/>
+                                <FaUser className='absolute top-1/2 -translate-y-1/2 left-5 text-green-600'/>
+
+                                    <input type="text" id="form-name" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your name" required/>
                                 </div>
                             </div>
                             <div className="w-full">
                                 <div className="relative">
-                                    <input type="email" id="form-email" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your email" required/>
+                                <FaMailBulk className='absolute top-1/2 -translate-y-1/2 left-5 text-green-600'/>
+
+                                    <input type="email" id="form-email" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your email" required/>
                                 </div>
                             </div>
 
                             <div className="w-full">
-                                <div className="relative">
-                                    <input type='text' id="form-phone" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your Phone" required/>
+                                <div className="relative h-full items-center">
+                                     <FaPhone className='absolute top-1/2 -translate-y-1/2 left-5 text-green-600'/>
+                                    <input type='text' id="form-phone" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your Phone" required/>
                                 </div>
                             </div>
                             <div className="w-full">
@@ -129,20 +135,20 @@ export default function ScheduleSignUpForm() {
 
                                                 <div className="w-full">
                                                 <h2 className='my-4 font-semibold'>Availability: </h2>
-                                                    <div className="relative flex flex-wrap gap-y-10">
+                                                    <div className="relative flex flex-wrap gap-y-10 gap-x-10 justify-evenly bg-gray-100 p-5">
 
                                                         
                                                                 {
                                                                     availibity.map((el) => (
                                                                         el.available &&
-                                                                        <div onClick={() => setAppointmentClick(`${el.time} ${el.morning ? "AM"  : "PM"}`)} key={el.time} className='flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden mb-2 cursor-pointer w-full md:w-1/3 hover:shadow-2xl hover:bg-slate-400 transition-all duration-100'>
+                                                                        <div onClick={() => setAppointmentClick(`${el.time} ${el.morning ? "AM"  : "PM"}`)} key={el.time} className='flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden mb-2 cursor-pointer w-1/3 hover:shadow-2xl hover:bg-slate-400 transition-all duration-100'>
                                                                             <div className="w-full p-4">
-                                                                                <h1 className="text-gray-900 font-bold text-2xl">
+                                                                                <h1 className="text-gray-900 font-bold text-sm md:text-2xl">
                                                                                     {el.time} <span className='text-xs'>{el.morning ? "AM"  : "PM"}</span>
                                                                                 </h1>
-                                                                                <p className="mt-2 text-gray-600 text-sm">
+                                                                                {/* <p className="mt-2 text-gray-600 text-sm">
                                                                                     {el.consultent}
-                                                                                </p>
+                                                                                </p> */}
                                                                             </div>
                                                                         </div>
                             
