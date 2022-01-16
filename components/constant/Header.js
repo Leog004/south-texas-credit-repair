@@ -55,8 +55,8 @@ export default function Header() {
 
                 {/* RIGHT SIDE | Contant  */}
                 <div className='hidden md:flex h-full items-center w-full md:w-1/4 justify-center'>
-                    <a href='tel:+1956784-2009' className='bg-[rgb(51,214,135)] px-4 py-2 rounded-md text-gray-50 font-semibold shadow-lg my-5'>
-                        +1 956 784-2009
+                    <a href='tel:+1956601-0284' className='bg-[rgb(51,214,135)] px-4 py-2 rounded-md text-gray-50 font-semibold shadow-lg my-5'>
+                        +1 956 601 0284
                     </a>
                 </div>
 
