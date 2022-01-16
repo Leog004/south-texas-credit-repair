@@ -6,7 +6,7 @@ import { getHomePageData } from '../services'
 export default function Home({data}) {
   return (
     <main className='h-full w-full bg-white'>
-        <section className='h-full min-h-screen w-full -my-28 md:-mt-24 bg-cover object-cover bg-center' style={{backgroundImage: `linear-gradient(to left, rgba(42, 51, 78, .8), rgba(42, 51, 78, .8)), url(${data.header.backgroundImage.url})`}}>
+        <section className='h-full min-h-screen w-full -my-28 md:-mt-24 bg-contain bg-no-repeat bg-center' style={{backgroundImage: `linear-gradient(to left, rgba(42, 51, 78, .8), rgba(42, 51, 78, .8)), url(${data.header.backgroundImage.url})`}}>
           <div className='absolute bottom-[15%] md:bottom-0 md:top-1/2 -translate-y-1/4 left-0 px-10 md:pl-36 motion-safe:animate-fadeIn'>
                   <div className='flex flex-col w-full md:w-[50rem]'>
                       <h2 className='text-[rgb(51,214,135)] text-xl md:text-2xl font-semibold leading-10 tracking-widest mb-1'>{data.header.subtitle}</h2>
