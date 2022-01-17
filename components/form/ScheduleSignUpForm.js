@@ -5,6 +5,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { getAppointmentsByData, submitAppointment } from '../../services';
 import {FaPhone, FaUser, FaMailBulk} from 'react-icons/fa'
+import SendEmailContact_Message_Dealer from '../../Email/index'
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
@@ -127,7 +128,22 @@ export default function ScheduleSignUpForm() {
                     setAppointment((el) => el = '');
                     getDaysAvailable();
                 }
-            })
+
+
+                const emailObj = {
+                    Username : name,
+                    Useremail :  email,
+                    Userphone : phone,
+                    Userdate : date,
+                    UserAppointment : appointment
+                  };
+            
+                SendEmailContact_Message_Dealer(emailObj);
+            
+            });
+
+
+
         }else{
 
             // toast properties
