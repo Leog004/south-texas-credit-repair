@@ -19,8 +19,6 @@ export default function emailApi(req, res) {
     const {email, name, subject} = req.body;
     const {Username, Useremail, Userphone, Userdate, UserAppointment} = req.body.body || 'Empty user'
 
-    console.log('HELLO: ', req.body);
-
     var sendSmtpEmail = {
         to: [{
             email,
@@ -41,5 +39,5 @@ export default function emailApi(req, res) {
     };
 
     sendInBlue(sendSmtpEmail);
-    res.send('success')
+    res.send(req)
 }
