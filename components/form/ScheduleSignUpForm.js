@@ -3,23 +3,30 @@ import React, { useState, useEffect } from 'react'
 
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { getAppointmentsByData } from '../../services';
+import { getAppointmentsByData, submitAppointment } from '../../services';
 import {FaPhone, FaUser, FaMailBulk} from 'react-icons/fa'
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+toast.configure();
+
+
 
 export default function ScheduleSignUpForm() {
     const [value, onChange] = useState(new Date);
     const [availibity, setAvailibity] = useState([]);
     const [appointment, setAppointment] = useState('');
 
+    const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
 
     useEffect(() => {
-        getDaysAvailable();
+        getDaysAvailable();    
     }, [value])
 
     const getDaysAvailable = async () => {
 
 
-
+        if(value.getDay() !== 0){
          await getAppointmentsByData(value.toLocaleDateString('sv-SE')).then((result) => {
 
             const timeAvailable = [
@@ -64,7 +71,7 @@ export default function ScheduleSignUpForm() {
             ];
 
             const myArrayFiltered = timeAvailable.filter((el) => {
-                return result.some((f) => {
+                return result.every((f) => {
                   return f.time !== el.time;
                 });
               });
@@ -72,6 +79,9 @@ export default function ScheduleSignUpForm() {
             console.log(result, value.toLocaleDateString('sv-SE'), myArrayFiltered, timeAvailable);
             setAvailibity(myArrayFiltered.length > 0 ? myArrayFiltered : timeAvailable);
         })
+    }else{
+        setAvailibity([]);
+    }
 
 
     }
@@ -79,6 +89,92 @@ export default function ScheduleSignUpForm() {
     const setAppointmentClick = (el) => {
         setAppointment(el);
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const { name, email, phone } = formData;
+        const date = value.toLocaleDateString('sv-SE');
+        appointment = appointment.toString().replace('AM', '').replace('PM', '').trim();
+
+
+        const schedulerObj = {
+            name,
+            email,
+            phone,
+            date,
+            appointment
+          };
+
+    
+        if(email && name && phone){
+            submitAppointment(schedulerObj).then((res) => {
+                if(res.createUpcomingAppointment){
+                    toast.success(`Thank you. Your information has been submitted successfully. Thank you`, {
+                        position: toast.POSITION.BOTTOM_CENTER,
+                        autoClose: true,
+                        closeOnClick: true
+                    });
+
+                    formData.name = '';
+                    formData.email = '';
+                    formData.phone = '';
+
+
+                    document.getElementById('form-name').style.border = 'transparent'
+                    document.getElementById('form-email').style.border = 'transparent'
+                    document.getElementById('form-phone').style.border = 'transparent'
+                    setAppointment((el) => el = '');
+                    getDaysAvailable();
+                }
+            })
+        }else{
+
+            // toast properties
+            toast.error(`Please make sure that you entered the required information.`, {
+                position: toast.POSITION.BOTTOM_CENTER,
+                autoClose: true,
+                closeOnClick: true
+            });
+
+            if(!email){
+                document.getElementById('form-email').style.border = '2px solid red'
+            }else{
+                document.getElementById('form-email').style.border = 'transparent'
+            }
+
+            if(!name){
+                document.getElementById('form-name').style.border = '2px solid red'
+            }else{
+                document.getElementById('form-name').style.border = 'transparent'
+
+            }
+
+            if(!phone){
+                document.getElementById('form-phone').style.border = '2px solid red'
+            }else{
+                document.getElementById('form-phone').style.border = 'transparent'
+
+            }
+        }
+    }
+
+
+    const onInputChange = (e) => {
+        const { target } = e;
+        if (target.type === 'checkbox') {
+          setFormData((prevState) => ({
+            ...prevState,
+            [target.name]: target.checked,
+          }));
+        } else {
+          setFormData((prevState) => ({
+            ...prevState,
+            [target.name]: target.value,
+          }));
+        }
+      };
+
 
     return (
             <form className="bg-white rounded-lg shadow sm:max-w-xl sm:w-full sm:mx-auto sm:overflow-hidden">
@@ -100,21 +196,21 @@ export default function ScheduleSignUpForm() {
                                 <div className=" relative ">
                                 <FaUser className='absolute top-1/2 -translate-y-1/2 left-5 text-green-600'/>
 
-                                    <input required type="text" id="form-name" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your name"/>
+                                    <input required value={formData.name} onChange={onInputChange} type="text" id="form-name"  name="name" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your name"/>
                                 </div>
                             </div>
                             <div className="w-full">
                                 <div className="relative">
                                 <FaMailBulk className='absolute top-1/2 -translate-y-1/2 left-5 text-green-600'/>
 
-                                    <input required type="email" id="form-email" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your email"/>
+                                    <input required value={formData.email} onChange={onInputChange} type="email" id="form-email"  name="email" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your email"/>
                                 </div>
                             </div>
 
                             <div className="w-full">
                                 <div className="relative h-full items-center">
                                      <FaPhone className='absolute top-1/2 -translate-y-1/2 left-5 text-green-600'/>
-                                    <input required type='text' id="form-phone" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your Phone"/>
+                                    <input required value={formData.phone} onChange={onInputChange} type='text' id="form-phone"  name="phone" className="pl-12 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your Phone"/>
                                 </div>
                             </div>
                             <div className="w-full">
@@ -128,7 +224,7 @@ export default function ScheduleSignUpForm() {
                                                         value={value}
                                                         minDate={new Date()}
                                                         calendarType='US'
-                                                        onClickDay={getDaysAvailable}
+                                                        
                                                     />
                                                     </div>
                                                 </div>
@@ -167,7 +263,7 @@ export default function ScheduleSignUpForm() {
                                 </div>
                             <div>
                                 <span className="block w-full rounded-md shadow-sm">
-                                    <button type="submit" className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                    <button onClick={handleSubmit} type="button" className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                         Schedule
                                     </button>
                                 </span>

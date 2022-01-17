@@ -66,4 +66,17 @@ export const getAppointmentsByData = async (date) => {
 }
 
 
+
+export const submitAppointment = async (obj) => {
+  const result = await fetch('/api/appointment', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(obj),
+  });
+
+  return result.json();
+};
+
   
