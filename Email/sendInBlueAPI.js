@@ -3,7 +3,7 @@ var defaultClient = SibApiV3Sdk.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var apiKey = defaultClient.authentications['api-key'];
-apiKey.apiKey = process.env.SENDINBLUE_API;
+apiKey.apiKey = process.env.SENDINBLUE_API_PRO;
 
 export default function sendInBlue(sendSmtpEmail){
 
