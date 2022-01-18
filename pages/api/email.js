@@ -14,7 +14,7 @@ import sendInBlue from "../../Email/sendInBlueAPI";
 */
 
 
-export default function emailApi(req, res) {
+export default async function emailApi(req, res) {
 
     const {email, name, subject} = req.body;
     const {Username, Useremail, Userphone, Userdate, UserAppointment} = req.body.body || 'Empty user'
@@ -42,5 +42,5 @@ export default function emailApi(req, res) {
 
     console.log('Passed Send In Blue');
 
-    res.send(req.body)
+    await res.send(req.body)
 }
