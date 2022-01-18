@@ -45,6 +45,77 @@ export const getHomePageData = async () => {
 }
 
 
+export const getLocationPageData = async () => {
+    
+
+  const query = gql`query GetLocationPageData {
+      contactPage(stage: PUBLISHED, where: {id: "ckyi5q8rcf35d0b846lvbyby9"}) {
+        id
+        profileName
+        profileDescription
+        sectionDescription
+        profileImage {
+          fileName
+          url
+        }
+        bigImage {
+          fileName
+          url
+        }
+        header {
+          backgroundImage {
+            fileName
+            url
+          }
+          subtitle
+          title
+        }
+      }
+    }
+    `;
+
+    const result = await request(graphqlAPI, query); // get our response from api call
+
+    return result.contactPage; // return data
+
+}
+
+
+export const getCreditRepairPageData = async () => {
+    
+
+  const query = gql`query GetCreditRepairPageData {
+      creditRepairPage(stage: PUBLISHED, where: {id: "ckyi5aylsf4rp0c82r89k64pc"}) {
+        id
+        sectionTitle
+        stepComponents {
+          title
+          description
+        }
+        stepImage {
+          fileName
+          url
+        }
+        header {
+          backgroundImage {
+            fileName
+            url
+          }
+          subtitle
+          title
+        }
+      }
+    }
+    `;
+
+    const result = await request(graphqlAPI, query); // get our response from api call
+
+    return result.creditRepairPage; // return data
+
+}
+
+
+
 
 export const getAppointmentsByData = async (date) => {
     
