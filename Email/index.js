@@ -14,7 +14,7 @@ export default async function SendEmailContact_Message_Dealer(body) {
         return res;
       });
 
-    return request.status === 200 ? res : false;
+    return request.status === 200 ? true : false;
 
   } catch (err) {
 
