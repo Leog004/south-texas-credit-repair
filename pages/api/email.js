@@ -38,7 +38,12 @@ export default async function emailApi(req, res) {
         }
     };
 
-    sendInBlue(sendSmtpEmail);
+    try{
+        sendInBlue(sendSmtpEmail);
+    }catch(err){
+        console.log(err);
+    }
+    
 
     console.log('Passed Send In Blue');
 

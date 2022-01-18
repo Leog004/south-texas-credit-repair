@@ -109,7 +109,7 @@ export default function ScheduleSignUpForm() {
 
     
         if(email && name && phone){
-            submitAppointment(schedulerObj).then((res) => {
+            await submitAppointment(schedulerObj).then((res) => {
                 if(res.createUpcomingAppointment){
                     toast.success(`Thank you. Your information has been submitted successfully. Thank you`, {
                         position: toast.POSITION.BOTTOM_CENTER,
