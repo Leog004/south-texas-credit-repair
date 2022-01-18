@@ -91,7 +91,7 @@ export default function ScheduleSignUpForm() {
         setAppointment(el);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const { name, email, phone } = formData;
@@ -128,19 +128,19 @@ export default function ScheduleSignUpForm() {
                     setAppointment((el) => el = '');
                     getDaysAvailable();
                 }
-
-
-                const emailObj = {
-                    Username : name,
-                    Useremail :  email,
-                    Userphone : phone,
-                    Userdate : date,
-                    UserAppointment : appointment
-                  };
-            
-                SendEmailContact_Message_Dealer(emailObj);
-            
             });
+
+
+            const emailObj = {
+                Username : name,
+                Useremail :  email,
+                Userphone : phone,
+                Userdate : date,
+                UserAppointment : appointment
+              };
+        
+            let response = await SendEmailContact_Message_Dealer(emailObj);
+            console.log(response);
 
 
 
