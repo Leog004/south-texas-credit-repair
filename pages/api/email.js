@@ -39,5 +39,8 @@ export default function emailApi(req, res) {
     };
 
     sendInBlue(sendSmtpEmail);
-    res.send(req)
+
+    console.log('Passed Send In Blue');
+
+    res.send(req.body)
 }
