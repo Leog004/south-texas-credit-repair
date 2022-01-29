@@ -6,7 +6,7 @@ import 'react-calendar/dist/Calendar.css';
 import { getAppointmentsByData, submitAppointment } from '../../services';
 import {FaPhone, FaUser, FaMailBulk} from 'react-icons/fa'
 import SendEmailContact_Message_Dealer from '../../Email/index'
-
+import {checkIfEmailValid} from '../../services/util'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 toast.configure();
@@ -153,7 +153,7 @@ export default function ScheduleSignUpForm() {
                 closeOnClick: true
             });
 
-            if(!email){
+            if(!email || !checkIfEmailValid(email)){
                 document.getElementById('form-email').style.border = '2px solid red'
             }else{
                 document.getElementById('form-email').style.border = 'transparent'
