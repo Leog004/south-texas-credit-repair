@@ -15,11 +15,8 @@ export default function index({data}) {
                 </div>
                 <div className="flex flex-col sm:flex-row mt-10">
                   <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
-                    <div className="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
-                      <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-10 h-10" viewBox="0 0 24 24">
-                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                      </svg>
+                    <div className="w-28 h-28 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400 overflow-hidden">
+                        <img className='w-full h-full' src={data.profileImage.url} />
                     </div>
                     <div className="flex flex-col items-center text-center justify-center">
                       <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">{data.profileName}</h2>
@@ -73,7 +70,7 @@ export default function index({data}) {
                   <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
                   <textarea id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                 </div>
-                <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
+                <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                 <p className="text-xs text-gray-500 mt-3"></p>
               </div>
             </div>
@@ -89,7 +86,7 @@ export async function getServerSideProps() {
 
   const data = (await getLocationPageData()) || [];
 
-  console.log(data);
+  // console.log(data);
 
   try{
 

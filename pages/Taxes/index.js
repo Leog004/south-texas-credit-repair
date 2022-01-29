@@ -1,13 +1,14 @@
 import React from 'react'
 import { BlockSection, FeatureSection, Hero, ScheduleSignUpForm } from '../../components'
+import { getTaxPageData } from '../../services';
 
-export default function index() {
+export default function index({data}) {
 
     return (
         <main className='bg-white'>
-            <Hero title={'Tax Service'} />
-            <FeatureSection/>
-            <BlockSection/>
+            <Hero image={data.header.backgroundImage.url} title={data.header.title} description={'_'} />
+            <FeatureSection data={data}/>
+            <BlockSection data={data} />
 
         <section id='calender' className='h-full min-h-screen w-full relative py-20 px-10 md:px-0'>
         
@@ -22,3 +23,25 @@ export default function index() {
         </main>
     )
 }
+
+
+
+// this method runs when page is loaded. Pulls data from server
+export async function getServerSideProps() {
+
+    const data = (await getTaxPageData()) || [];
+  
+    // console.log(data);
+  
+    try{
+  
+        return {
+            props: { data }, // return them to our front end as props
+          };
+  
+    }catch(err){
+        console.log(err);
+    }
+  
+  }
+  

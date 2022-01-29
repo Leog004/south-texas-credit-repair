@@ -115,6 +115,44 @@ export const getCreditRepairPageData = async () => {
 }
 
 
+export const getTaxPageData = async () => {
+    
+
+  const query = gql`query GetTaxPageData {
+      taxReturnPage(stage: PUBLISHED, where: {id: "ckyi5skv4fgbo0a29czpcm2yb"}) {
+        id
+        sectionSubtitle
+        sectionTitle
+        description
+        checkmarks
+        images{
+          fileName
+          url
+        }
+        featureCardComponents{
+          title
+          text
+        }
+        
+        header {
+          backgroundImage {
+            fileName
+            url
+          }
+          subtitle
+          title
+        }
+      }
+    }
+    `;
+
+    const result = await request(graphqlAPI, query); // get our response from api call
+
+    return result.taxReturnPage; // return data
+
+}
+
+
 
 
 export const getAppointmentsByData = async (date) => {

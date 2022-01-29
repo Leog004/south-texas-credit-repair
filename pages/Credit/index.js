@@ -15,7 +15,7 @@ export default function index({data}) {
       <div className="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
         {
           data.stepComponents.map((el) => (
-            <div className="flex relative pb-12 last:pb-0">
+            <div key={el.title} className="flex relative pb-12 last:pb-0">
             <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[rgb(51,214,135)] inline-flex items-center justify-center text-white relative z-10">
               <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
@@ -58,7 +58,7 @@ export async function getServerSideProps() {
 
   const data = (await getCreditRepairPageData()) || [];
 
-  console.log(data);
+  // console.log(data);
 
   try{
 
