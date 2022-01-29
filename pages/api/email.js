@@ -1,6 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import sendInBlue from "../../Email/sendInBlueAPI";
+const mail = require('@sendgrid/mail');
+
+mail.setApiKey(process.env.SENDGRID)
 
 /*
   South Texas Credit Repair
@@ -22,7 +25,7 @@ export default async function emailApi(req, res) {
     var sendSmtpEmail = {
         to: [{
             email,
-            name,
+            email,
             subject
         }],
         templateId: 1,
@@ -49,3 +52,39 @@ export default async function emailApi(req, res) {
 
     await res.send(req.body)
 }
+
+
+// export default async function sendGridEmailAPI(req, res){
+
+    
+//     const {email, name, subject} = req.body;
+//     const {Username, Useremail, Userphone, Userdate, UserAppointment} = req.body.body || 'Empty user'
+    
+//   try{
+//         const message = `
+//             Name: ${Username}\r\n
+//             Email: ${Useremail}\r\n
+//             Phone: ${Userphone}\r\n
+//             Date: ${Userdate}\r\n
+//             Appointment: ${UserAppointment}\r\n
+//         `;
+
+//         const data = {
+//             to: email,
+//             from: email,
+//             subject: subject,
+//             text: message,
+//             html: message.replace(/\r\n/g, '<br>')
+//         };
+        
+//        const result = await mail.send(data);
+
+//        if(result){ 
+//            console.log(result);
+//            return res.status(200).send(result);
+//        }
+
+//     }catch(error){
+//         return res.status(400).send(error);
+//     }
+// }

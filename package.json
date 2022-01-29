@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.6.0",
     "@badrap/bar-of-progress": "^0.1.2",
     "@stripe/react-stripe-js": "^1.6.0",
     "@stripe/stripe-js": "^1.21.1",

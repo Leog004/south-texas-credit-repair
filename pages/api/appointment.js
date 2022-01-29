@@ -13,7 +13,7 @@ const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 // export a default function for API route to work
 export default async function asynchandlerMessage(req, res) {
 
-    console.log(req);
+    //console.log(req);
 
 const graphQLClient = new GraphQLClient((graphqlAPI), {
     headers: {

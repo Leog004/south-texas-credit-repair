@@ -88,7 +88,7 @@ export async function getServerSideProps() {
 
   const data = (await getHomePageData()) || [];
 
-  console.log(data);
+  //console.log(data);
 
   try{
 

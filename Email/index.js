@@ -1,11 +1,12 @@
 import axios from "axios";
 
+
 export default async function SendEmailContact_Message_Dealer(body) {
   try {
     let request = await axios
       .post("/api/email", {
         name: "South Texas Credit Repair",
-        email: "southtexascreditrepair2019@gmail.com",
+        email: "leog4za@gmail.com",
         subject: `New Appointment`,
         body: body
       })
@@ -18,7 +19,7 @@ export default async function SendEmailContact_Message_Dealer(body) {
 
   } catch (err) {
 
-    console.error(err);
+    console.error('Error Found Here: ', err);
 
   }
 
