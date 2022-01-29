@@ -70,7 +70,7 @@ export default async function sendGridEmailAPI(req, res){
         // `;
 
         const data = {
-            to: 'leog4za@gmail.com',
+            to: 'southtexascreditrepair2019@gmail.com',
             from: {
                 email: 'lgnetworkdesign4@gmail.com',
                 name: 'lgnetworkdesign4@gmail.com'
