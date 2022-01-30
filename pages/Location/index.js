@@ -12,7 +12,7 @@ toast.configure();
 export default function Index({data}) {
 
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +29,20 @@ export default function Index({data}) {
           };
     
         let response = await SendEmailContact_Message(emailObj);
-        //console.log(response);
+
+        if(response){  
+              toast.success(`Thank you. Your information has been submitted successfully. Thank you`, {
+                position: toast.POSITION.BOTTOM_CENTER,
+                autoClose: true,
+                closeOnClick: true
+            });
+
+            formData.name = '';
+            formData.email = '';
+            formData.message = '';
+        
+            setError(true);
+        }
 
     }else{
 
@@ -53,10 +66,10 @@ export default function Index({data}) {
 
         }
 
-        if(!phone){
-            document.getElementById('form-phone').style.border = '2px solid red'
+        if(!message){
+            document.getElementById('form-message').style.border = '2px solid red'
         }else{
-            document.getElementById('form-phone').style.border = 'transparent'
+            document.getElementById('form-message').style.border = 'transparent'
 
         }
     }
@@ -130,18 +143,19 @@ const onInputChange = (e) => {
                 <p className="leading-relaxed mb-5 text-gray-600">We will love to hear from you</p>
                 <div className="relative mb-4">
                   <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
-                  <input value={formData.name} onChange={onInputChange}  type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"  required/>
+                  <input value={formData.name} onChange={onInputChange}  type="text" id="form-name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"  required/>
                 </div>
                 <div className="relative mb-4">
                   <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-                  <input value={formData.email} onChange={onInputChange}  type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
+                  <input value={formData.email} onChange={onInputChange}  type="email" id="form-email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
                 </div>
                 <div className="relative mb-4">
                   <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
-                  <textarea value={formData.message} onChange={onInputChange}  id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                  <textarea value={formData.message} onChange={onInputChange}  id="form-message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                 </div>
                 <button onClick={handleSubmit} type='button' className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                 <p className="text-xs text-gray-500 mt-3"></p>
+                {error && <div></div>}
               </div>
             </div>
           </section>

@@ -80,7 +80,7 @@ export default async function sendGridEmailAPI(req, res){
        const result = await mail.send(data);
 
        if(result){ 
-           console.log(result);
+           //console.log(result);
            return res.status(200).send(result);
        }
 
