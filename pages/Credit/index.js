@@ -1,5 +1,5 @@
 import React from 'react'
-import { BlockSection, FeatureSection, Hero, ScheduleSignUpForm } from '../../components'
+import { Hero, ScheduleSignUpForm } from '../../components'
 import { getCreditRepairPageData } from '../../services';
 
 export default function index({data}) {
