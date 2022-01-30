@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 toast.configure();
 
 
-export default function index({data}) {
+export default function Index({data}) {
 
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
@@ -76,6 +76,8 @@ const onInputChange = (e) => {
     }));
   }
 };
+
+
     return (
         <main className='bg-white'>
             <Hero image={data.header.backgroundImage.url} title={data.header.title} description={'_'} />
