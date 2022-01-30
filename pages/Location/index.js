@@ -1,8 +1,81 @@
-import React from 'react'
-import { BlockSection, FeatureSection, Hero, ScheduleSignUpForm } from '../../components'
+import React, { useState, useEffect } from 'react'
+import { Hero } from '../../components'
 import { getLocationPageData } from '../../services';
+import { toast } from 'react-toastify';
+import {SendEmailContact_Message} from '../../Email/index'
+import {checkIfEmailValid} from '../../services/util'
+
+import 'react-toastify/dist/ReactToastify.css'
+toast.configure();
+
 
 export default function index({data}) {
+
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { name, email, message } = formData;
+
+
+    if(email && name && message && checkIfEmailValid(email)){
+ 
+        const emailObj = {
+            Username : name,
+            Useremail :  email,
+            UserMessage : message
+          };
+    
+        let response = await SendEmailContact_Message(emailObj);
+        //console.log(response);
+
+    }else{
+
+        // toast properties
+        toast.error(`Please make sure that you entered the required information.`, {
+            position: toast.POSITION.BOTTOM_CENTER,
+            autoClose: true,
+            closeOnClick: true
+        });
+
+        if(!email || !checkIfEmailValid(email)){
+            document.getElementById('form-email').style.border = '2px solid red'
+        }else{
+            document.getElementById('form-email').style.border = 'transparent'
+        }
+
+        if(!name){
+            document.getElementById('form-name').style.border = '2px solid red'
+        }else{
+            document.getElementById('form-name').style.border = 'transparent'
+
+        }
+
+        if(!phone){
+            document.getElementById('form-phone').style.border = '2px solid red'
+        }else{
+            document.getElementById('form-phone').style.border = 'transparent'
+
+        }
+    }
+}
+
+const onInputChange = (e) => {
+  const { target } = e;
+  if (target.type === 'checkbox') {
+    setFormData((prevState) => ({
+      ...prevState,
+      [target.name]: target.checked,
+    }));
+  } else {
+    setFormData((prevState) => ({
+      ...prevState,
+      [target.name]: target.value,
+    }));
+  }
+};
     return (
         <main className='bg-white'>
             <Hero image={data.header.backgroundImage.url} title={data.header.title} description={'_'} />
@@ -10,7 +83,7 @@ export default function index({data}) {
           <section className="text-gray-600 body-font">
             <div className="container px-5 py-24 mx-auto flex flex-col">
               <div className="lg:w-5/6 mx-auto">
-                <div className="rounded-lg h-64 overflow-hidden">
+                <div className="rounded-lg h-64 overflow-hidden shadow-xl">
                   <img alt="content" className="object-cover object-center h-full w-full" src={data.bigImage.url} />
                 </div>
                 <div className="flex flex-col sm:flex-row mt-10">
@@ -23,6 +96,9 @@ export default function index({data}) {
                       <div className="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
                       <p className="text-base">{data.profileDescription}</p>
                     </div>
+                  </div>
+                  <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+                    <p class="leading-relaxed text-lg mb-4">{data.sectionDescription}</p>
                   </div>
                 </div>
               </div>
@@ -52,17 +128,17 @@ export default function index({data}) {
                 <p className="leading-relaxed mb-5 text-gray-600">We will love to hear from you</p>
                 <div className="relative mb-4">
                   <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
-                  <input type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                  <input value={formData.name} onChange={onInputChange}  type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"  required/>
                 </div>
                 <div className="relative mb-4">
                   <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-                  <input type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                  <input value={formData.email} onChange={onInputChange}  type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
                 </div>
                 <div className="relative mb-4">
                   <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
-                  <textarea id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                  <textarea value={formData.message} onChange={onInputChange}  id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                 </div>
-                <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+                <button onClick={handleSubmit} type='button' className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                 <p className="text-xs text-gray-500 mt-3"></p>
               </div>
             </div>

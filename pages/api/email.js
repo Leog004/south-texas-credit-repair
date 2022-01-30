@@ -61,23 +61,12 @@ export default async function sendGridEmailAPI(req, res){
     const {Username, Useremail, Userphone, Userdate, UserAppointment} = req.body.body || 'Empty user'
     
   try{
-        // const message = `
-        //     Name: ${Username}\r\n
-        //     Email: ${Useremail}\r\n
-        //     Phone: ${Userphone}\r\n
-        //     Date: ${Userdate}\r\n
-        //     Appointment: ${UserAppointment}\r\n
-        // `;
-
         const data = {
-            to: 'southtexascreditrepair2019@gmail.com',
+            to: process.env.EMAILTO,
             from: {
-                email: 'lgnetworkdesign4@gmail.com',
-                name: 'lgnetworkdesign4@gmail.com'
+                email: process.env.EMAILPROVIDER,
+                name: process.env.EMAILPROVIDER
             },
-            // subject: subject,
-            // text: message,
-            // html: message.replace(/\r\n/g, '<br>'),
             templateId: 'd-f64f21db5cab4fa9ba309095c870c399',
             dynamic_template_data:{
                 name: Username,

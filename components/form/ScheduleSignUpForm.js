@@ -77,7 +77,7 @@ export default function ScheduleSignUpForm() {
                 });
               });
 
-            console.log(result, value.toLocaleDateString('sv-SE'), myArrayFiltered, timeAvailable);
+            // console.log(result, value.toLocaleDateString('sv-SE'), myArrayFiltered, timeAvailable);
             setAvailibity(myArrayFiltered.length > 0 ? myArrayFiltered : timeAvailable);
         })
     }else{
@@ -140,7 +140,7 @@ export default function ScheduleSignUpForm() {
               };
         
             let response = await SendEmailContact_Message_Dealer(emailObj);
-            console.log(response);
+            //console.log(response);
 
 
 
