@@ -4,6 +4,8 @@ import { getLocationPageData } from '../../services';
 import { toast } from 'react-toastify';
 import {SendEmailContact_Message} from '../../Email/index'
 import {checkIfEmailValid} from '../../services/util'
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 import 'react-toastify/dist/ReactToastify.css'
 toast.configure();
@@ -13,6 +15,7 @@ export default function Index({data}) {
 
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [error, setError] = useState(false);
+  const [verified, setVerified] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -91,6 +94,11 @@ const onInputChange = (e) => {
 };
 
 
+const handleonChangeRec = (value) => {
+  setVerified(true);
+}
+
+
     return (
         <main className='bg-white'>
             <Hero image={data.header.backgroundImage.url} title={data.header.title} description={'_'} />
@@ -153,8 +161,14 @@ const onInputChange = (e) => {
                   <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
                   <textarea value={formData.message} onChange={onInputChange}  id="form-message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                 </div>
-                <button onClick={handleSubmit} type='button' className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
-                <p className="text-xs text-gray-500 mt-3"></p>
+                <ReCAPTCHA
+                  sitekey='6LestkYeAAAAAFlmDEYyYqbQ0-UnoRV3iEJEtV_N'
+                  onChange={handleonChangeRec}
+                />
+                <p className="text-xs text-gray-500 mt-3 mb-3">Must verify ^</p>
+
+                <button disabled={!verified} onClick={handleSubmit} type='button' className={`text-white rounded text-lg border-0 py-2 px-6 focus:outline-none ${verified ? 'bg-indigo-500  hover:bg-indigo-600' : 'bg-gray-200 cursor-not-allowed'} `}>Submit</button>
+                
                 {error && <div></div>}
               </div>
             </div>
